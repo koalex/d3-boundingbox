@@ -1,0 +1,29 @@
+{
+  "name": "d3-boundingbox",
+  "version": "1.0.0",
+  "description": "D3.js lib to give any element with x,y,width,height attributes a resizable, movable behaviour similar to interact.js.",
+  "main": "d3.bbox.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koalex/d3-boundingbox.git"
+  },
+  "keywords": [
+    "Bounding Box",
+    "d3",
+    "d3js",
+    "resizable",
+    "dragable"
+  ],
+  "author": {
+    "name": "Konstantin Aleksandrov",
+    "url": "https://github.com/koalex"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/koalex/d3-boundingbox/issues"
+  },
+  "homepage": "https://github.com/koalex/d3-boundingbox#readme"
+}
