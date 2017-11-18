@@ -42,10 +42,10 @@ Just like any [D3.js reusable component](http://bost.ocks.org/mike/chart/),
 create the behaviour and call it on a collection:
 
 ```js
-var bb = d3lb.bbox()
-d3.selectAll("rect").call(bb)
+import bb from 'd3-boundingbox';
+d3.selectAll("rect").call(bb);
 // Alternatively
-d3lb.bbox().infect(d3.selectAll("rect"))
+d3lb.bbox().infect(d3.selectAll("rect"));
 ```
 
 That's it. Since a svg `rect` element supports the `x`, `y`, `width` and `height`
@@ -72,12 +72,14 @@ You can impose constraints, i.e. min/max x- and y-coordinates within which
 the element should stay. You can either pass a pair of constant values:
 
 ```js
-var bb = d3lb.bbox()
+import bb from 'd3-boundingbox';
+
+bb()
     .xextent([minx, maxx])
     .yextent([10, +Infinity])
 d3.selectAll("rect.head").call(bb)
 // Alternatively
-d3lb.bbox().infect(d3.selectAll("rect.head"))
+bb().infect(d3.selectAll("rect.head"))
     .xextent([minx, maxx])
     .yextent([10, +Infinity])
 ```
@@ -89,7 +91,7 @@ For example, you can restrict a head's bounding-box to stay within the
 corresonding full-body bounding-box:
 
 ```js
-d3lb.bbox().infect(d3.selectAll("rect.head"))
+bb().infect(d3.selectAll("rect.head"))
     .xextent(function(d, i) { return [d.body.left, d.body.right]; }
     .yextent(function(d, i) { return [d.body.top, d.body.bottom]; }
 ```
@@ -113,10 +115,12 @@ individually. Here are their names:
 Using the `directions` function, you can restrict the enabled interactions:
 
 ```js
-var bb = d3lb.bbox().directions(['e', 'w', 'x'])
+import bb from 'd3-boundingbox';
+
+bb().directions(['e', 'w', 'x'])
 d3.selectAll("rect").call(bb)
 // Alternatively
-d3lb.bbox().infect(d3.selectAll("rect"))
+bb().infect(d3.selectAll("rect"))
     .directions(['e', 'w', 'x'])
 ```
 
@@ -135,7 +139,9 @@ the customization is done by passing an object with properties having the
 interaction names mentioned above, and their values being the cursors to use:
 
 ```js
-var bb = d3lb.bbox().infect(d3.selectAll("rect"))
+import bb from 'd3-boundingbox';
+
+bb().infect(d3.selectAll("rect"))
     .directions(['e', 'w', 'x'])
     .cursors({
         x: 'url(dragx.cur), col-resize',
@@ -175,7 +181,9 @@ more fine-grained control than you could achieve with the [constraints](#imposin
 This is how you'd add the `drag` class to an element during drag:
 
 ```js
-var bb = d3lb.bbox().infect(d3.selectAll(".ninjas"))
+import bb from 'd3-boundingbox';
+
+bb().infect(d3.selectAll(".ninjas"))
     .on("dragstart", function(d, i) { this.classList.add("drag") })
     .on("dragend", function(d, i) { this.classList.remove("drag") })
 ```
@@ -187,29 +195,10 @@ Finally, you can choose how large, in pixels, the resize-handle should be,
 either isometrically: `handlesize(5)`, or for each side individually:
 
 ```js
-var bb = d3lb.bbox()
-    .handlesize({
-        'w': 3, 'e': 3,
-        'n': 6, 's': 6
-    })
+import bb from 'd3-boundingbox';
+
+bb().handlesize({
+    'w': 3, 'e': 3,
+    'n': 6, 's': 6
+});  
 ```
-
-Feedback
---------
-
-It's always nice to hear what cool things people do with my libraries, so don't
-hesitate to [let me know](http://lb.eyer.be) what you used it for!
-
-If you have any suggestions, use-cases I missed, or anything, make sure to file
-an issue or, better yet, make a pull-request!
-
-License: MIT
-------------
-
-Copyright (c) 2015 Lucas Beyer
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

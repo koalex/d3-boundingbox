@@ -1,13 +1,4 @@
-// Copyright (c) 2015 Lucas Beyer
-// Licensed under the MIT License (MIT)
-// Version 1.0
-
-var root = (typeof exports !== "undefined" && exports !== null) ? exports : this
-if (!root.d3lb) {
-    root.d3lb = {}
-}
-
-root.d3lb.bbox = function () {
+export default function () {
     // All those are initialized to default further down using the setters.
     var xextent = null
     var yextent = null
