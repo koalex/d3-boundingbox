@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/koalex/d3-boundingbox/issues"
   },
-  "homepage": "https://github.com/koalex/d3-boundingbox#readme"
+  "homepage": "https://github.com/koalex/d3-boundingbox#readme",
+  "dependencies": {
+    "d3": "^3.5.17"
+  }
 }

@@ -1,3 +1,5 @@
+import d3 from 'd3';
+
 export default function () {
     // All those are initialized to default further down using the setters.
     var xextent = null
